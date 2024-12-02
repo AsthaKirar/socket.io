@@ -7,10 +7,18 @@
     <script src="https://cdn.socket.io/4.8.1/socket.io.min.js" integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1>helloo</h1>
+    <div>
+      <input type="text" placeholder="typing message">
+      <button>send</button>
+    </div>
     <script src="/socket.io/socket.io.js"></script>
 <script>
   const socket = io();
+  document.querySelector('button').addEventListener('click',()=>{
+    const msg = document.querySelector('input').value
+    console.log(msg)
+    socket.emit("msg",msg)
+  })
 </script>
 </body>
 </html>

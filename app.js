@@ -1,14 +1,20 @@
 const express = require("express");
+const { Socket } = require("socket.io");
 const app = express();
 
 // Set the view engine to EJS
 app.set("view engine", "ejs");
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
-io.on('connection', client => {
+io.on('connection', socket => {
   console.log("client connected")
-  client.on('event', data => { /* … */ });
-  client.on('disconnect', () => { /* … */ });
+socket.on("msg",(msg)=>{
+  console.log(msg)
+})
+
+  socket.on('disconnect', () => {
+    console.log("client disconnected")
+  });
 });
 
 
