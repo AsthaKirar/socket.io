@@ -10,6 +10,7 @@ io.on('connection', socket => {
   console.log("client connected")
 socket.on("msg",(msg)=>{
   console.log(msg)
+  io.emit("msg",msg)
 })
 
   socket.on('disconnect', () => {
